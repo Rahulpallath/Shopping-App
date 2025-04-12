@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 340 100% 60%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 180 82% 56%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 270 76% 53%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+
+    --chart-1: 222.2 47.4% 11.2%;
+    --chart-2: 215.3 16.3% 46.9%;
+    --chart-3: 220 14.3% 95.9%;
+    --chart-4: 340 100% 60%;
+    --chart-5: 270 76% 53%;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 340 100% 60%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 180 82% 56%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 270 76% 53%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Custom font families */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-accent {
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Smooth scrolling for the page */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Custom animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes slideLeft {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slideRight {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes fadeUpIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-slide-left {
+    animation: slideLeft 0.5s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate 8s linear infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  .collection-item.appear {
+    animation: fadeUpIn 0.6s forwards;
+  }
+
+  /* Loader animation */
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  /* Hover effect for product cards */
+  .product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Menu transition */
+  .menu-transition {
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), 
+                opacity 0.55s ease;
+  }
+
+  /* Split text effect */
+  .split-text-container {
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  .split-text {
+    display: inline-block;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .in-view .split-text {
+    transform: translateY(0);
+  }
+}
